@@ -81,8 +81,8 @@ $arrayCart = array();
                           <div class="update-block text-right">
                             <input onclick="updateCart('{{$order->id}}')"
                                    href="{{route('ajax-update-cart', $order->id)}}"
-                                    id="update_id_{{$order->id}}"
-                                   value="Update" class="btn btn-outlined">
+                                   id="update_id_{{$order->id}}" type="button"
+                                   value="Update" class="btn btn-outlined" style="width: 120px">
                           </div>
                         </td>
 

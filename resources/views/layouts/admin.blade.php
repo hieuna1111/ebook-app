@@ -250,7 +250,7 @@
                   </svg>
                   <span class="ml-2">Inbox </span>
                 </a>
-                <a href="/assets/page-login"
+                <a href="/login"
                    class="dropdown-item ai-icon">
                   <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
                        width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -263,26 +263,26 @@
                 </a>
               </div>
             </li>
-            <li class="dropdown schedule-event-inner">
-              <a href="javascript:void(0)" class="btn btn-rounded event-btn btn-outline-primary">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                     xmlns="http://www.w3.org/2000/svg" class="scale5 mr-0 mb-0 mr-sm-2 mb-sm-1">
-                  <path
-                    d="M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z"
-                    stroke="white" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round"/>
-                  <path d="M16 2V6" stroke="white" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round"/>
-                  <path d="M8 2V6" stroke="white" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round"/>
-                  <path d="M3 10H21" stroke="white" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round"/>
-                </svg>
-                <span class="d-none d-xl-inline-block">Schedule</span> <span
-                  class="d-none d-lg-inline-block">Event(5)</span>
-                <i class="fa fa-caret-right scale3 ml-2 d-none d-sm-inline-block"></i>
-              </a>
-            </li>
+{{--            <li class="dropdown schedule-event-inner">--}}
+{{--              <a href="javascript:void(0)" class="btn btn-rounded event-btn btn-outline-primary">--}}
+{{--                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"--}}
+{{--                     xmlns="http://www.w3.org/2000/svg" class="scale5 mr-0 mb-0 mr-sm-2 mb-sm-1">--}}
+{{--                  <path--}}
+{{--                    d="M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z"--}}
+{{--                    stroke="white" stroke-width="2" stroke-linecap="round"--}}
+{{--                    stroke-linejoin="round"/>--}}
+{{--                  <path d="M16 2V6" stroke="white" stroke-width="2" stroke-linecap="round"--}}
+{{--                        stroke-linejoin="round"/>--}}
+{{--                  <path d="M8 2V6" stroke="white" stroke-width="2" stroke-linecap="round"--}}
+{{--                        stroke-linejoin="round"/>--}}
+{{--                  <path d="M3 10H21" stroke="white" stroke-width="2" stroke-linecap="round"--}}
+{{--                        stroke-linejoin="round"/>--}}
+{{--                </svg>--}}
+{{--                <span class="d-none d-xl-inline-block">Schedule</span> <span--}}
+{{--                  class="d-none d-lg-inline-block">Event(5)</span>--}}
+{{--                <i class="fa fa-caret-right scale3 ml-2 d-none d-sm-inline-block"></i>--}}
+{{--              </a>--}}
+{{--            </li>--}}
           </ul>
         </div>
       </nav>
@@ -321,11 +321,11 @@
             <span class="nav-text">Apps</span>
           </a>
           <ul aria-expanded="false">
-            <li><a href="/assets/app-profile">Users</a></li>
+            <li><a href="/admin/revenue">Chart-Revenue</a></li>
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Shop</a>
               <ul aria-expanded="false">
-                <li><a href="/admin/product/list">Books</a></li>
-                <li><a href="/admin/product/create">Add a new book</a></li>
+                <li><a href="/admin/book/list">Books</a></li>
+                <li><a href="/admin/book/create">Add a new book</a></li>
               </ul>
             </li>
           </ul>

@@ -21,7 +21,7 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-3 ">
-            <a href="index.html" class="site-brand">
+            <a href="{{route('list-book')}}" class="site-brand">
               <img src="/web/image/logo.png" alt="">
             </a>
           </div>
@@ -282,8 +282,8 @@
             <div class="main-navigation flex-lg-right">
               <div class="cart-widget">
                 <div class="login-block">
-                  <a href="login-register.html" class="font-weight-bold">Login</a> <br>
-                  <span>or</span><a href="login-register.html">Register</a>
+                  <a href="/login" class="font-weight-bold">Login</a> <br>
+{{--                  <span>or</span><a href="login-register.html">Register</a>--}}
                 </div>
                 <div class="cart-block">
                   <div class="cart-total">
@@ -334,7 +334,7 @@
       <div class="container">
         <div class="row align-items-sm-end align-items-center">
           <div class="col-md-4 col-7">
-            <a href="index.html" class="site-brand">
+            <a href="{{route('list-book')}}" class="site-brand">
               <img src="/web/logo.png" alt="">
             </a>
           </div>

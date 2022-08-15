@@ -40,6 +40,8 @@ class ProductController extends Controller
 
     DB::collection('pending_orders')->insert($order);
 
+    toastr()->success('Thêm vào giỏ hàng thành công!', ['timeOut' => 3000]);
+
     return redirect('/book/list');
   }
 
