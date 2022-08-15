@@ -50,9 +50,9 @@
                           <td>{{$book->shop_discount}}</td>
                           <td>
                             <div class="d-flex">
-                              <a href="/admin/product/{{$book->slug}}/edit" class="btn btn-primary shadow btn-xs sharp mr-1"><i
+                              <a href="/admin/book/{{$book->slug}}/edit" class="btn btn-primary shadow btn-xs sharp mr-1"><i
                                   class="fa fa-pencil"></i></a>
-                              <a href="/admin/product/{{$book->slug}}/delete" class="btn btn-danger shadow btn-xs sharp"><i
+                              <a href="/admin/book/{{$book->slug}}/delete" class="btn btn-danger shadow btn-xs sharp"><i
                                   class="fa fa-trash"></i></a>
                             </div>
                           </td>
