@@ -20,12 +20,12 @@ Route::get('/', function () {
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
   Route::group(['prefix' => 'book'], function () {
-    Route::get('list', 'ProductController@index');
-    Route::get('create', 'ProductController@create');
-    Route::post('store', 'ProductController@store');
-    Route::get('/{slug}/edit', 'ProductController@edit');
-    Route::post('/{slug}/update', 'ProductController@update');
-    Route::get('/{slug}/delete', 'ProductController@destroy');
+    Route::get('list', 'ProductController@index')->middleware("adminAuth")->name('admin-list-book');;
+    Route::get('create', 'ProductController@create')->middleware("adminAuth");;
+    Route::post('store', 'ProductController@store')->middleware("adminAuth");;
+    Route::get('/{slug}/edit', 'ProductController@edit')->middleware("adminAuth");;
+    Route::post('/{slug}/update', 'ProductController@update')->middleware("adminAuth");;
+    Route::get('/{slug}/delete', 'ProductController@destroy')->middleware("adminAuth");;
   });
 
   Route::get('revenue', 'RevenueController@index');
@@ -33,15 +33,19 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 Route::group(['namespace' => 'Web'], function () {
   Route::group(['prefix' => 'book'], function () {
-    Route::get('list', 'ProductController@index');
+    Route::get('list', 'ProductController@index')->name('list-book');
 
     Route::post('/{slug}/add-to-cart', 'ProductController@addToCart');
   });
-
 
   Route::group(['prefix' => 'cart'], function () {
     Route::get('list', 'CartController@index');
     Route::get('/update/{id}/book', 'CartController@update')->name('ajax-update-cart');
     Route::get('/checkout', 'CartController@checkout')->name('get-check-out');
   });
+});
+
+Route::group(['namespace' => 'Auth'], function () {
+  Route::get('login', 'AuthController@index')->name('login');
+  Route::post('signIn', 'AuthController@signIn')->name('sign-in');
 });
