@@ -13,14 +13,23 @@ class CartController extends Controller
   public function index(Request $request)
   {
     $orders = PendingOrder::all();
-    $orders1 = DB::collection('pending_orders')
+//    $orders1 = DB::collection('pending_orders')
+//      ->where('user_email', Session::get('email_login'))
+//      ->where('status', 'pending')
+//      ->get();
+
+    $orders2 = PendingOrder::query();
+    $orders2 = $orders2
       ->where('user_email', Session::get('email_login'))
       ->where('status', 'pending')
       ->get();
 //    dd($orders1);
 //    dd($orders);
+//    foreach ($orders2 as $order) {
+//      dd($order->id);
+//    }
 
-    return view('web.cart.list')->with('orders', $orders);
+    return view('web.cart.list')->with('orders', $orders2);
   }
 
   public function update(Request $request, $id): \Illuminate\Http\JsonResponse
