@@ -7,6 +7,7 @@ use App\Models\PendingOrder;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -35,10 +36,25 @@ class ProductController extends Controller
       'cover_image' => $data['cover_image'],
       'price' => $data['shop_price'],
       'quantity' => (int)$data['quantity'],
-      'total_price' => $data['shop_price']
+      'total_price' => $data['shop_price'],
+      'status' => 'pending',
+      'user_email' => empty(Session::get('email_login')) ? null : Session::get('email_login')
     ];
 
-    DB::collection('pending_orders')->insert($order);
+    $bookInCart = DB::collection('pending_orders')
+      ->where('user_email', Session::get('email_login'))
+      ->where('product_id', $data['id'])
+      ->where('status', 'pending')
+      ->first();
+
+    if (empty($bookInCart)) {
+      DB::collection('pending_orders')->insert($order);
+    } else {
+      $order['quantity'] = $bookInCart['quantity'] + 1;
+      DB::collection('pending_orders')
+        ->where('product_id', $data['id'])
+        ->update($order);
+    }
 
     toastr()->success('Thêm vào giỏ hàng thành công!', ['timeOut' => 3000]);
 

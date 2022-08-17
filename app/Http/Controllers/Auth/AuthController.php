@@ -30,6 +30,7 @@ class AuthController extends Controller
     }
     if ($infoAdmin['password'] == $request['password'] && $infoAdmin['role'] == 'user') {
       session(['role' => 'user']);
+      session(['email_login' => $request['email']]);
       toastr()->success('Đăng nhập thành công!');
       return redirect()->route('list-book')->with('message', 'Đăng nhập thành công');
     }

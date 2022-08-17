@@ -13,6 +13,12 @@ class CartController extends Controller
   public function index(Request $request)
   {
     $orders = PendingOrder::all();
+    $orders1 = DB::collection('pending_orders')
+      ->where('user_email', Session::get('email_login'))
+      ->where('status', 'pending')
+      ->get();
+//    dd($orders1);
+//    dd($orders);
 
     return view('web.cart.list')->with('orders', $orders);
   }
@@ -25,7 +31,9 @@ class CartController extends Controller
       'cover_image' => $data['image'],
       'price' => floatval($data['price']),
       'quantity' => (int)$data['quantity'],
-      'total_price' => floatval($data['totalPrice'])
+      'total_price' => floatval($data['totalPrice']),
+      'user_email' => empty(Session::get('email_login')) ? null : Session::get('email_login'),
+      'status' => 'pending'
     ];
     DB::collection('pending_orders')->where('_id', $id)->update($order);
     return response()->json(['data' => $order]);
