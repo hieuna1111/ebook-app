@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Enums\OrderStatus;
 use App\Http\Controllers\Controller;
 use App\Models\PendingOrder;
 use Illuminate\Http\Request;
@@ -21,13 +22,8 @@ class CartController extends Controller
     $orders2 = PendingOrder::query();
     $orders2 = $orders2
       ->where('user_email', Session::get('email_login'))
-      ->where('status', 'pending')
+      ->where('status', OrderStatus::Draft)
       ->get();
-//    dd($orders1);
-//    dd($orders);
-//    foreach ($orders2 as $order) {
-//      dd($order->id);
-//    }
 
     return view('web.cart.list')->with('orders', $orders2);
   }
@@ -42,67 +38,85 @@ class CartController extends Controller
       'quantity' => (int)$data['quantity'],
       'total_price' => floatval($data['totalPrice']),
       'user_email' => empty(Session::get('email_login')) ? null : Session::get('email_login'),
-      'status' => 'pending'
+      'status' => OrderStatus::Draft
     ];
     DB::collection('pending_orders')->where('_id', $id)->update($order);
     return response()->json(['data' => $order]);
   }
 
   public function checkout() {
-    return view('web.cart.checkout');
+    $orders = PendingOrder::query();
+    $orders = $orders
+      ->where('user_email', Session::get('email_login'))
+      ->where('status', OrderStatus::Draft)
+      ->get();
+
+    $grandTotal = 0;
+    if (!empty($orders)) {
+      $grandTotal = collect($orders)->sum(function ($order) use ($grandTotal) {
+        return $grandTotal + $order->total_price;
+      });
+    }
+
+    $data = [
+      'grandTotal' => $grandTotal,
+      'orders' => $orders
+    ];
+//    dd($orders);
+
+    return view('web.cart.checkout', $data);
   }
 
   /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
+   * @throws \Illuminate\Validation\ValidationException
    */
-  public function create()
+  public function placeOrder(Request $request): \Illuminate\Http\RedirectResponse
   {
-    //
-  }
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param \Illuminate\Http\Request $request
-   * @return \Illuminate\Http\Response
-   */
-  public function store(Request $request)
-  {
-    //
-  }
+    $req = $request->all();
 
-  /**
-   * Display the specified resource.
-   *
-   * @param int $id
-   * @return \Illuminate\Http\Response
-   */
-  public function show($id)
-  {
-    //
-  }
+    $rules = [
+      'firstName' => 'required',
+      'lastName' => 'required',
+      'numberPhone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+      'address' => 'required',
+      'town_city' => 'required',
+    ];
+    $this->validate($request, $rules);
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param int $id
-   * @return \Illuminate\Http\Response
-   */
-  public function edit($id)
-  {
-    //
-  }
+    $orders = PendingOrder::query();
+    $orders = $orders
+      ->where('user_email', Session::get('email_login'))
+      ->where('status', OrderStatus::Draft)
+      ->get();
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param int $id
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy($id)
-  {
-    //
+    if (!empty($orders) && !$orders->isEmpty()) {
+      collect($orders)->map(function ($element) use ($req) {
+
+        $order = [
+          'product_id' => $element->product_id,
+          'product_name' => $element->product_name,
+          'cover_image' => $element->cover_image,
+          'price' => $element->price,
+          'total_price' => $element->total_price,
+          'quantity' => $element->quantity,
+          'status' => OrderStatus::Pending,
+          'user_email' => $element->user_email,
+          //add info user
+          'first_name' => $req['firstName'],
+          'last_name' => $req['lastName'],
+          'number_phone' => $req['numberPhone'],
+          'address' => $req['address'],
+          'town_city' => $req['town_city']
+        ];
+
+        DB::collection('pending_orders')->where('_id', $element->id)->update($order);
+
+        toastr()->success('Mua hàng thành công!', ['timeOut' => 3000]);
+        return redirect()->route('list-book');
+      });
+    }
+
+    return redirect()->route('list-book');
   }
 }
