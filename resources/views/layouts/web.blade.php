@@ -316,7 +316,7 @@
                       <div class="btn-block">
                         <a href="/cart/list" class="btn">View Cart <i
                             class="fas fa-chevron-right"></i></a>
-                        <a href="#" class="btn btn--primary">Check Out <i
+                        <a href="{{route('get-check-out')}}" class="btn btn--primary">Check Out <i
                             class="fas fa-chevron-right"></i></a>
                       </div>
                     </div>

@@ -42,6 +42,7 @@ Route::group(['namespace' => 'Web'], function () {
     Route::get('list', 'CartController@index');
     Route::get('/update/{id}/book', 'CartController@update')->name('ajax-update-cart');
     Route::get('/checkout', 'CartController@checkout')->name('get-check-out');
+    Route::post('/place-order', 'CartController@placeOrder')->name('place-order');
   });
 });
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Enums\OrderStatus;
 use App\Http\Controllers\Controller;
 use App\Models\PendingOrder;
 use App\Models\Product;
@@ -37,14 +38,14 @@ class ProductController extends Controller
       'price' => $data['shop_price'],
       'quantity' => (int)$data['quantity'],
       'total_price' => $data['shop_price'],
-      'status' => 'pending',
+      'status' => OrderStatus::Draft,
       'user_email' => empty(Session::get('email_login')) ? null : Session::get('email_login')
     ];
 
     $bookInCart = DB::collection('pending_orders')
       ->where('user_email', Session::get('email_login'))
       ->where('product_id', $data['id'])
-      ->where('status', 'pending')
+      ->where('status', OrderStatus::Draft)
       ->first();
 
     if (empty($bookInCart)) {
