@@ -110,6 +110,17 @@
       <path value="$PROJECT_DIR$/vendor/mongodb/mongodb" />
       <path value="$PROJECT_DIR$/vendor/jenssegers/mongodb" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/vendor/php-flasher/flasher" />
+      <path value="$PROJECT_DIR$/vendor/php-flasher/flasher-laravel" />
+      <path value="$PROJECT_DIR$/vendor/php-flasher/flasher-toastr" />
+      <path value="$PROJECT_DIR$/vendor/yoeunes/toastr" />
+      <path value="$PROJECT_DIR$/vendor/bensampo/laravel-enum" />
+      <path value="$PROJECT_DIR$/vendor/hanneskod/classtools" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-code" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-eventmanager" />
+      <path value="$PROJECT_DIR$/vendor/mcordingley/linearalgebra" />
+      <path value="$PROJECT_DIR$/vendor/mcordingley/regression" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

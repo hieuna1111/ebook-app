@@ -6,6 +6,7 @@ use App\Enums\OrderStatus;
 use App\Http\Controllers\Controller;
 use App\Models\PendingOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -90,8 +91,13 @@ class CartController extends Controller
       ->where('status', OrderStatus::Draft)
       ->get();
 
+    $query = PendingOrder::query();
+    $orderNo = $query->max('order_no');
+    if (empty($orderNo)) $orderNo = 1;
+    else $orderNo += 1;
+
     if (!empty($orders) && !$orders->isEmpty()) {
-      collect($orders)->map(function ($element) use ($req) {
+      collect($orders)->map(function ($element) use ($orderNo, $req) {
 
         $order = [
           'product_id' => $element->product_id,
@@ -102,6 +108,8 @@ class CartController extends Controller
           'quantity' => $element->quantity,
           'status' => OrderStatus::Pending,
           'user_email' => $element->user_email,
+          'order_no' => $orderNo,
+          'date_time' => (Carbon::now('Asia/Ho_Chi_Minh'))->toDateTimeString(),
           //add info user
           'first_name' => $req['firstName'],
           'last_name' => $req['lastName'],
@@ -111,10 +119,9 @@ class CartController extends Controller
         ];
 
         DB::collection('pending_orders')->where('_id', $element->id)->update($order);
-
-        toastr()->success('Mua hàng thành công!', ['timeOut' => 3000]);
-        return redirect()->route('list-book');
       });
+      toastr()->success('Mua hàng thành công!', ['timeOut' => 3000]);
+      return redirect()->route('list-book');
     }
 
     return redirect()->route('list-book');

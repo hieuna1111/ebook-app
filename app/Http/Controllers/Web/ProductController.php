@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PendingOrder;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -39,7 +40,8 @@ class ProductController extends Controller
       'quantity' => (int)$data['quantity'],
       'total_price' => $data['shop_price'],
       'status' => OrderStatus::Draft,
-      'user_email' => empty(Session::get('email_login')) ? null : Session::get('email_login')
+      'user_email' => empty(Session::get('email_login')) ? null : Session::get('email_login'),
+      'date_time' => (Carbon::now('Asia/Ho_Chi_Minh'))->toDateTimeString(),
     ];
 
     $bookInCart = DB::collection('pending_orders')

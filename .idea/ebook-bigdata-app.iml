@@ -115,6 +115,17 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/mongodb/mongodb" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jenssegers/mongodb" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/ui" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-flasher/flasher" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-flasher/flasher-laravel" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-flasher/flasher-toastr" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/yoeunes/toastr" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bensampo/laravel-enum" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hanneskod/classtools" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-zendframework-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-code" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-eventmanager" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mcordingley/linearalgebra" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mcordingley/regression" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

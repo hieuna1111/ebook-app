@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\InsertTest\InsertUser;
+use App\InsertTest\Regression;
 use Illuminate\Console\Command;
 
 class ScrapeCommand extends Command
@@ -12,7 +13,7 @@ class ScrapeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'insert:user';
+    protected $signature = 'regression:analysis';
 
     /**
      * The console command description.
@@ -38,7 +39,7 @@ class ScrapeCommand extends Command
      */
     public function handle()
     {
-        $bot = new InsertUser();
-        $bot->insert();
+        $bot = new Regression();
+        $bot->analysis();
     }
 }

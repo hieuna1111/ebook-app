@@ -20,12 +20,18 @@ Route::get('/', function () {
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
   Route::group(['prefix' => 'book'], function () {
-    Route::get('list', 'ProductController@index')->middleware("adminAuth")->name('admin-list-book');;
-    Route::get('create', 'ProductController@create')->middleware("adminAuth");;
-    Route::post('store', 'ProductController@store')->middleware("adminAuth");;
-    Route::get('/{slug}/edit', 'ProductController@edit')->middleware("adminAuth");;
-    Route::post('/{slug}/update', 'ProductController@update')->middleware("adminAuth");;
-    Route::get('/{slug}/delete', 'ProductController@destroy')->middleware("adminAuth");;
+    Route::get('list', 'ProductController@index')->middleware("adminAuth")->name('admin-list-book');
+    Route::get('create', 'ProductController@create')->middleware("adminAuth");
+    Route::post('store', 'ProductController@store')->middleware("adminAuth");
+    Route::get('/{slug}/edit', 'ProductController@edit')->middleware("adminAuth");
+    Route::post('/{slug}/update', 'ProductController@update')->middleware("adminAuth");
+    Route::get('/{slug}/delete', 'ProductController@destroy')->middleware("adminAuth");
+  });
+
+  Route::group(['prefix' => 'order'], function () {
+    Route::get('/list', 'OrderController@index')->middleware("adminAuth")->name('orders');
+    Route::get('/{id}/success', 'OrderController@orderSuccess')->middleware("adminAuth")->name('order-success');
+    Route::get('/{id}/failure', 'OrderController@orderFailure')->middleware("adminAuth")->name('order-failure');
   });
 
   Route::get('revenue', 'RevenueController@index');

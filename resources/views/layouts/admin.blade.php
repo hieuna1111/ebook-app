@@ -326,6 +326,7 @@
               <ul aria-expanded="false">
                 <li><a href="/admin/book/list">Books</a></li>
                 <li><a href="/admin/book/create">Add a new book</a></li>
+                <li><a href="{{route('orders')}}">Orders</a></li>
               </ul>
             </li>
           </ul>

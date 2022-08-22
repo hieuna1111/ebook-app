@@ -22,7 +22,7 @@
         <div class="row align-items-center">
           <div class="col-lg-3 ">
             <a href="{{route('list-book')}}" class="site-brand">
-              <img src="/web/image/logo.png" alt="">
+              <img src="/web/image/logo-weupbook.png" alt="">
             </a>
           </div>
           <div class="col-lg-3">
@@ -637,7 +637,7 @@
       <div class="row align-items-center">
         <div class="col-lg-4">
           <a href="index.html" class="site-brand">
-            <img src="/web/image/logo.png" alt="">
+            <img src="/web/image/logo-weupbook.png" alt="">
           </a>
         </div>
         <div class="col-lg-8">
@@ -770,7 +770,7 @@
       <div class=" col-xl-3 col-lg-4 col-sm-6">
         <div class="single-footer pb--40">
           <div class="brand-footer footer-title">
-            <img src="/web/image/logo--footer.png" alt="">
+            <img src="/web/image/logo-weupbook.png" alt="">
           </div>
           <div class="footer-contact">
             <p><span class="label">Address:</span><span class="text">Example Street 98, HH2 BacHa, New

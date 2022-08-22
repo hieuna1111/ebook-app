@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0564dc933ea8212142f1029917a3572e",
+    "content-hash": "9d4dba3effbdc795295c1ff46fbee8e2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1944,6 +1944,102 @@
                 }
             ],
             "time": "2022-04-17T13:12:02+00:00"
+        },
+        {
+            "name": "mcordingley/linearalgebra",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcordingley/LinearAlgebra.git",
+                "reference": "745edaa8b82a956e6f8e51af5f9c9ddea869fede"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcordingley/LinearAlgebra/zipball/745edaa8b82a956e6f8e51af5f9c9ddea869fede",
+                "reference": "745edaa8b82a956e6f8e51af5f9c9ddea869fede",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MCordingley\\LinearAlgebra\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Cordingley",
+                    "email": "Michael.Cordingley@gmail.com"
+                }
+            ],
+            "description": "Matrix math for PHP.",
+            "keywords": [
+                "linear-algebra",
+                "matrix"
+            ],
+            "support": {
+                "issues": "https://github.com/mcordingley/LinearAlgebra/issues",
+                "source": "https://github.com/mcordingley/LinearAlgebra/tree/2.3.0"
+            },
+            "time": "2020-10-21T21:14:13+00:00"
+        },
+        {
+            "name": "mcordingley/regression",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcordingley/Regression.git",
+                "reference": "ed772243f96dbd6175cb272dde8357680bb75040"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcordingley/Regression/zipball/ed772243f96dbd6175cb272dde8357680bb75040",
+                "reference": "ed772243f96dbd6175cb272dde8357680bb75040",
+                "shasum": ""
+            },
+            "require": {
+                "mcordingley/linearalgebra": "^2.0.0",
+                "php": "^7.0.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "phpunit/phpunit": "^5.5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MCordingley\\Regression\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Cordingley",
+                    "email": "Michael.Cordingley@gmail.com"
+                }
+            ],
+            "description": "Regression Package for PHP",
+            "keywords": [
+                "regression",
+                "statistics"
+            ],
+            "support": {
+                "issues": "https://github.com/mcordingley/Regression/issues",
+                "source": "https://github.com/mcordingley/Regression/tree/master"
+            },
+            "time": "2017-02-11T00:28:30+00:00"
         },
         {
             "name": "mongodb/mongodb",
